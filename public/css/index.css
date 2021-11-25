@@ -1,0 +1,149 @@
+.bg-1{
+    background-color: #a2b7c2;
+}
+.bg-2{
+    background-color: rgb(219, 35, 35);
+}
+.bg-3{
+    background-color: #57ade4;
+}
+.new-header-style{
+    font-weight: 800; 
+    color: black;
+    
+}
+.new-button-style {
+    width: 105px !important;
+    height: 30px !important;
+    margin-bottom: 3px; 
+    background-color: #7e7979;
+    color: white;
+}
+.booking-filter{
+    margin: 2.5rem 1rem;
+}
+.booking-filter button{
+    width: 8em !important;
+    color: white !important;
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border: 0;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    color: #3c4761;
+    margin: 0.5rem;
+    transition: .5s;
+}
+.booking-filter button:hover{
+    cursor: pointer;
+    box-shadow: inset 0 .3rem .5rem rgba(60, 71, 97, 0.5);
+}
+.h4-tag-style{
+    margin: 1px;
+    font-weight: 800;
+}
+.h4-tag-style-2{
+    margin: 5px;
+    font-weight: 400;
+}
+.footer-btn{
+    display: flex ;
+    justify-content: space-between;
+}
+.footer-btn button{
+    width: 8em !important;
+    margin:  0 2%;
+    background-color: whitesmoke;
+    color: black;
+    font-weight: 700;
+}
+.input-style{
+    width: 100%; 
+    margin: 10px 0; 
+    border: 0; 
+    border-radius: 5px;
+}
+
+.file {
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+  }
+  
+  .file > input[type='file'] {
+    display: none
+  }
+.label-input{
+    border: 1px solid rgb(88, 85, 85);
+  background-color: white;
+  color:rgb(107, 97, 97);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.column-label{
+    display: flex;
+    flex-direction: column;
+}
+.form-alignment{
+    display: flex; 
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+}
+.mr{
+    margin-right: 5px !important;
+}
+.vr{
+    display: flex;
+    align-items:flex-end;
+    padding-bottom: 5px;
+}
+@media only screen and (max-width:768px){
+    .width-setup{
+        width:100%; margin: auto;
+    }
+    .text-align{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .input-style{
+        width: 100%; 
+        margin: 20px 0; 
+        border: 0; 
+        border-radius: 5px;
+    }
+    .text-align-c{
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width:768px){
+    .width-setup{
+        width:60%; margin: auto;
+    }
+    .text-align-l{
+        text-align: left;
+    }
+    .text-align-r{
+        text-align: right;
+    }
+    .text-align-c{
+        text-align: center;
+    }
+    .input-style{
+        width: 100%; 
+        margin: 10px 0; 
+        border: 0; 
+        border-radius: 5px;
+    }
+    .input-date-width{
+        width: 21%;
+    }
+    .input-date-width-border{
+        border-radius: 5px;
+        border: 0;
+    }
+    
+}
