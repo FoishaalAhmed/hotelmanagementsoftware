@@ -72,7 +72,7 @@
     request()->is('admin/mobile-banks') ||
     request()->is('admin/bank-transactions') ||
     request()->is('admin/bank-transactions/*') ||
-    request()->is('admin/mobile-transactions') || 
+    request()->is('admin/mobile-transactions') ||
     request()->is('admin/mobile-transactions/*')) {{ 'active' }} @endif">
                     <a href="#">
                         <i class="fa fa-building"></i> <span>Hotel Management</span>
@@ -656,6 +656,66 @@
                                 </li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+            @endif
+            @if (auth()->user()->can('All') || auth()->user()->can('Hall'))
+                <li class="treeview @if (request()->is('hall/costs') || request()->is('hall/costs/*') || request()->is('hall/categories') || Request::path() === 'hall/halls' || request()->is('hall/halls/*') || Request::path() === 'hall/rents' || request()->is('hall/rents/*')) {{ 'active' }} @endif">
+                    <a href="#">
+                        <i class="fa fa-university"></i> <span>Hall Management</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="@if (request()->is('hall/categories')) {{ 'active' }} @endif">
+                            <a href="{{ route('hall.categories.index') }}">
+                                <i class="fa fa-list"></i> <span>{{ __('Hall Categories') }}</span>
+                            </a>
+                        </li>
+                        <li class="@if (request()->is('hall/costs') || request()->is('hall/costs/*')) {{ 'active' }} @endif">
+                            <a href="{{ route('hall.costs.index') }}">
+                                <i class="fa fa-money"></i> <span>{{ __('Daily Costs') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview @if (Request::path() === 'hall/halls' || request()->is('hall/halls/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-university"></i> <span>Hall</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'hall/halls/create') {{ 'active' }} @endif"><a href="{{ route('hall.halls.create') }}"><i
+                                            class="fa fa-plus"></i>
+                                        New Hall</a>
+                                </li>
+                                <li class="@if (Request::path() === 'hall/halls') {{ 'active' }} @endif"><a href="{{ route('hall.halls.index') }}"><i
+                                            class="fa fa-list"></i>
+                                        View Hall</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview @if (Request::path() === 'hall/rents' || request()->is('hall/rents/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-money"></i> <span>Hall Rent</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'hall/rents/create') {{ 'active' }} @endif"><a href="{{ route('hall.rents.create') }}"><i
+                                            class="fa fa-plus"></i>
+                                        New Hall Rent</a>
+                                </li>
+                                <li class="@if (Request::path() === 'hall/rents') {{ 'active' }} @endif"><a href="{{ route('hall.rents.index') }}"><i
+                                            class="fa fa-list"></i>
+                                        View Hall Rent</a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
             @endif
