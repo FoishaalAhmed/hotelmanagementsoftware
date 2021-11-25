@@ -108,9 +108,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Trade Licence') }}</label>
-                                                <input name="trade_licence" placeholder="{{ __('Trade Licence') }}"
-                                                    class="form-control" type="text" value="{{ $hotel->trade_licence }}"
+                                                <label>{{ __('Trade License') }}</label>
+                                                <input name="trade_license" placeholder="{{ __('Trade License') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->trade_license }}"
                                                     autocomplete="off">
                                             </div>
                                         </div>
@@ -187,6 +187,76 @@
                                                             {{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Facebook') }}</label>
+                                                <input name="facebook" placeholder="{{ __('Facebook') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->facebook }}"
+                                                    autocomplete="off" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Instagram') }}</label>
+                                                <input name="instagram" placeholder="{{ __('Instagram') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->instagram }}"
+                                                    autocomplete="off" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Twitter') }}</label>
+                                                <input name="twitter" placeholder="{{ __('Twitter') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->twitter }}"
+                                                    autocomplete="off" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Linkedin') }}</label>
+                                                <input name="linkedin" placeholder="{{ __('Linkedin') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->linkedin }}"
+                                                    autocomplete="off" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Total Room') }}</label>
+                                                <input name="room" placeholder="{{ __('Total Room') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->room }}"
+                                                    autocomplete="off" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Min Rate') }}</label>
+                                                <input name="min_rate" placeholder="{{ __('Min Rate') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->min_rate }}"
+                                                    autocomplete="off" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Max Rate') }}</label>
+                                                <input name="max_rate" placeholder="{{ __('Max Rate') }}"
+                                                    class="form-control" type="text" value="{{ $hotel->max_rate }}"
+                                                    autocomplete="off" required="">
                                             </div>
                                         </div>
                                     </div>

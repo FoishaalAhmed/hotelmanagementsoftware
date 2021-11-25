@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\LoanAdvanceController;
 use App\Http\Controllers\Admin\MobileBankController;
 use App\Http\Controllers\Admin\MobileTransactionController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ReviewCategoryController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -37,8 +38,10 @@ use App\Http\Controllers\Admin\UserController;
 Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin', 'status'], 'as' => 'admin.'], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('profile', [DashboardController::class, 'profile'])->name('profile');
-    Route::put('profile/{id}', [DashboardController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('bank-info', [ProfileController::class, 'create'])->name('bank.info');
+    Route::post('bank-info', [ProfileController::class, 'store'])->name('bank.info');
     Route::get('service-charge/create', [ServiceChargeController::class, 'create'])->name('serviceCharge.create');
     Route::post('service-charge/store', [ServiceChargeController::class, 'store'])->name('serviceCharge.store');
     Route::post('checkout/store', [CheckoutController::class, 'store'])->name('checkouts.store');

@@ -3,38 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Hotel extends Model
 {
 
     protected $fillable = [
-        'name', 'email', 'phone', 'mobile', 'fax', 'map', 'website', 'road_house', 'zip_code', 'division_id', 'district_id', 'upozila_id', 'logo', 'floor', 'star', 'trade_licence', 'tin_number', 'about',
+        'name', 'email', 'phone', 'mobile', 'fax', 'map', 'website', 'road_house', 'zip_code', 'division_id', 'district_id', 'upozila_id', 'logo', 'floor', 'star', 'trade_license', 'tin_number', 'about', 'bank', 'account_number', 'contact_person', 'contact_number', 'facebook', 'instagram', 'twitter', 'linkedin', 'room', 'min_rate', 'max_rate',
     ];
 
-    public static $validateFrontRule = [
-
-        'type'          => 'required|string|max:255',
-        'name'          => 'required|string|max:255',
-        'username'      => 'required|string|max:255',
-        'password'      => 'required|string|min:8|confirmed',
-        'email'         => 'required|email|max:255|unique:users,email',
-        'mobile'        => 'required|string|max:15|unique:users,phone',
-        'phone'         => 'nullable|string|max:15',
-        'floor'         => 'required|string|max:10',
-        'star'          => 'required|string|max:7',
-        'fax'           => 'nullable|string|max:255',
-        'google_map'    => 'nullable|string',
-        'website'       => 'nullable|string|max:255',
-        'road_house'    => 'nullable|string|max:255',
-        'zip_code'      => 'nullable|string|max:255',
-        'city'          => 'nullable|string|max:255',
-        'division_id'   => 'required|numeric',
-        'district_id'   => 'required|numeric',
-        'upozila_id'    => 'required|numeric',
-        'trade_licence' => 'nullable|string|max:255',
-        'tin_number'    => 'nullable|string|max:255',
-        'about'         => 'nullable|string|',
+    public static $validateBankInfo = [
+        'bank' => ['required', 'max: 255', 'string'],
+        'account_number' => ['required', 'max: 255', 'string'],
+        'contact_person' => ['required', 'max: 255', 'string'],
+        'contact_number' => ['required', 'max: 15', 'string'],
     ];
 
     public function updateHotel(Object $request, Int $id)
@@ -68,9 +50,16 @@ class Hotel extends Model
             $hotel->upozila_id    = $request->upozila_id;
             $hotel->floor         = $request->floor;
             $hotel->star          = $request->star;
-            $hotel->trade_licence = $request->trade_licence;
+            $hotel->trade_license = $request->trade_license;
             $hotel->tin_number    = $request->tin_number;
             $hotel->about         = $request->about;
+            $hotel->facebook      = $request->facebook;
+            $hotel->instagram     = $request->instagram;
+            $hotel->twitter       = $request->twitter;
+            $hotel->linkedin      = $request->linkedin;
+            $hotel->room          = $request->room;
+            $hotel->min_rate      = $request->min_rate;
+            $hotel->max_rate      = $request->max_rate;
             $updateHotel          =  $hotel->save();
 
             if ($files = $request->file('photo')) {
@@ -78,9 +67,9 @@ class Hotel extends Model
                 foreach ($files as $file) {
 
                     $multiple_upload_path = 'https://amarlodge.com/public/images/hotels/';
-                        $name                 = $file->getClientOriginalName();
-                        $multiple_image_name  = date('YmdHis') . '_' . $name;
-                        $file->storeAs('hotels', $multiple_image_name, 'parent_disk');
+                    $name                 = $file->getClientOriginalName();
+                    $multiple_image_name  = date('YmdHis') . '_' . $name;
+                    $file->storeAs('hotels', $multiple_image_name, 'parent_disk');
 
                     $HotelPhoto           = new HotelPhoto;
                     $HotelPhoto->photo    = $multiple_upload_path . $multiple_image_name;
@@ -116,5 +105,19 @@ class Hotel extends Model
         $success         = $image->storeAs('hotels', $image_full_name, 'parent_disk');
         $hotel->photo     = $image_url;
         $hotel->save();
+    }
+
+    public function storeHotelBankInfo(Object $request)
+    {
+        $hotel = $this::findOrFail(auth()->user()->hotel_id);
+        $hotel->bank = $request->bank;
+        $hotel->account_number = $request->account_number;
+        $hotel->contact_person = $request->contact_person;
+        $hotel->contact_number = $request->contact_number;
+        $storeHotelBankInfo = $hotel->save();
+
+        $storeHotelBankInfo
+            ? session()->flash('message', 'Bank Info Stored Successfully!')
+            : session()->flash('message', 'Something Went Wrong!');
     }
 }
