@@ -25,7 +25,7 @@ class HallController extends Controller
     
     public function create()
     {
-        $categories = HallCategory::orderBy('name', 'asc')->select('id', 'name')->get();
+        $categories = HallCategory::where('hotel_id', auth()->user()->hotel_id)->orderBy('name', 'asc')->select('id', 'name')->get();
         return view('backend.hall.halls.create', compact('categories'));
     }
 
@@ -38,7 +38,7 @@ class HallController extends Controller
 
     public function edit(Hall $hall)
     {
-        $categories = HallCategory::orderBy('name', 'asc')->select('id', 'name')->get();
+        $categories = HallCategory::where('hotel_id', auth()->user()->hotel_id)->orderBy('name', 'asc')->select('id', 'name')->get();
         return view('backend.hall.halls.edit', compact('categories', 'hall'));
     }
 

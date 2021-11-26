@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Api\Employee\DepartmentController;
 use App\Http\Controllers\Api\Employee\EmployeeController;
+use App\Http\Controllers\Api\Hall\HallCategoryController;
+use App\Http\Controllers\Api\Hall\HallController;
+use App\Http\Controllers\Api\Hall\HallRentController;
 use App\Http\Controllers\Api\HelperController as ApiHelperController;
 use App\Http\Controllers\Api\Hotel\BankController;
 use App\Http\Controllers\Api\Hotel\BankTransactionController;
@@ -145,5 +148,11 @@ Route::group(
         Route::apiResource('departments', DepartmentController::class);
         Route::apiResource('employees', EmployeeController::class);
         /** Employee Api End Here **/
+
+        /** Hall Management Start Here */
+        Route::apiResource('hall-categories', HallCategoryController::class);
+        Route::apiResource('halls', HallController::class);
+        Route::apiResource('rents', HallRentController::class);
+        /** Hall Management End Here */
     }
 );
