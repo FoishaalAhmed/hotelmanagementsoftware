@@ -659,7 +659,8 @@
                     </ul>
                 </li>
             @endif
-            @if (auth()->user()->can('All') || auth()->user()->can('Hall'))
+            @if (auth()->user()->can('All') ||
+    auth()->user()->can('Hall'))
                 <li class="treeview @if (request()->is('hall/costs') || request()->is('hall/costs/*') || request()->is('hall/categories') || Request::path() === 'hall/halls' || request()->is('hall/halls/*') || Request::path() === 'hall/rents' || request()->is('hall/rents/*')) {{ 'active' }} @endif">
                     <a href="#">
                         <i class="fa fa-university"></i> <span>Hall Management</span>
@@ -712,6 +713,57 @@
                                 <li class="@if (Request::path() === 'hall/rents') {{ 'active' }} @endif"><a href="{{ route('hall.rents.index') }}"><i
                                             class="fa fa-list"></i>
                                         View Hall Rent</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+            @if (auth()->user()->can('All') ||
+    auth()->user()->can('Gym'))
+                <li class="treeview @if (Request::path() === 'gym/gyms' || request()->is('gym/gyms/*') || Request::path() === 'gym/charges' || request()->is('gym/charges/*')) {{ 'active' }} @endif">
+                    <a href="#">
+                        <i class="fa fa-university"></i> <span>Hall Management</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li class="treeview @if (Request::path() === 'gym/gyms' || request()->is('gym/gyms/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-university"></i> <span>Gym</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'gym/gyms/create') {{ 'active' }} @endif"><a href="{{ route('gym.gyms.create') }}"><i
+                                            class="fa fa-plus"></i>
+                                        New Gym</a>
+                                </li>
+                                <li class="@if (Request::path() === 'gym/gyms') {{ 'active' }} @endif"><a href="{{ route('gym.gyms.index') }}"><i
+                                            class="fa fa-list"></i>
+                                        View Gym</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview @if (Request::path() === 'gym/charges' || request()->is('gym/charges/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-money"></i> <span>Gym Charge</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'gym/charges/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('gym.charges.create') }}"><i class="fa fa-plus"></i>
+                                        New Gym Charge</a>
+                                </li>
+                                <li class="@if (Request::path() === 'gym/charges') {{ 'active' }} @endif"><a
+                                        href="{{ route('gym.charges.index') }}"><i class="fa fa-list"></i>
+                                        View Gym Charge</a>
                                 </li>
                             </ul>
                         </li>

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Hall Rent Update')
+@section('title', 'Gym Charge Update')
 @section('content')
     <div class="content-wrapper">
         <section class="content-header">
@@ -14,57 +14,41 @@
                     <!-- Content Header (hall header) -->
                     <div class="box box-primary box-solid">
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('Hall Rent Update') }}</h3>
+                            <h3 class="box-title">{{ __('Gym Charge Update') }}</h3>
                             <div class="box-tools pull-right">
-                                <a href="{{ route('hall.rents.index') }}" class="btn btn-sm bg-green"><i
-                                        class="fa fa-list"></i> {{ __('Hall Rent List') }}</a>
+                                <a href="{{ route('gym.charges.index') }}" class="btn btn-sm bg-green"><i
+                                        class="fa fa-list"></i> {{ __('Gym Charge List') }}</a>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <br>
                             @include('includes.error')
-                            <form action="{{ route('hall.rents.update', $rent->id) }}" method="POST" class="form-horizontal"
+                            <form action="{{ route('gym.charges.update', $charge->id) }}" method="POST" class="form-horizontal"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="col-md-12">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Hall') }}</label>
-                                                <select name="hall_id" class="form-control select2" id="type"
+                                                <label>{{ __('Gym') }}</label>
+                                                <select name="gym_id" class="form-control select2" id="type"
                                                     required="" style="width: 100%">
-                                                    @foreach ($halls as $item)
-                                                        <option value="{{ $item->id }}" @if ($rent->hall_id == $item->name) {{ 'selected' }} @endif>
+                                                    @foreach ($gyms as $item)
+                                                        <option value="{{ $item->id }}" @if ($charge->gym_id == $item->name) {{ 'selected' }} @endif>
                                                             {{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('type') }}</label>
-                                                <select name="type" class="form-control" id="type" style="width: 100%"
-                                                    required=''>
-                                                    <option value="Hourly" @if ($rent->type == 'Hourly') {{ 'selected' }}
-
-                                                        @endif>{{ __('Hourly') }}</option>
-                                                    <option value="Daily" @if ($rent->type == 'Daily') {{ 'selected' }}
-
-                                                        @endif>{{ __('Daily') }}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label>{{ __('Rent') }}</label>
-                                                <input name="rent" placeholder="{{ __('Rent') }}"
-                                                    class="form-control" type="numeric" value="{{ $rent->rent }}"
+                                                <label>{{ __('Charge') }}</label>
+                                                <input name="charge" placeholder="{{ __('Charge') }}"
+                                                    class="form-control" type="number" value="{{ $charge->charge }}"
                                                     autocomplete="off" required="">
                                             </div>
                                         </div>
