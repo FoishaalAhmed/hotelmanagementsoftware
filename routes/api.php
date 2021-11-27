@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\Employee\DepartmentController;
 use App\Http\Controllers\Api\Employee\EmployeeController;
+use App\Http\Controllers\Api\Gym\GymChargeController;
+use App\Http\Controllers\Api\Gym\GymController;
 use App\Http\Controllers\Api\Hall\HallCategoryController;
 use App\Http\Controllers\Api\Hall\HallController;
 use App\Http\Controllers\Api\Hall\HallRentController;
@@ -44,6 +46,7 @@ use App\Http\Controllers\Api\Restaurant\OrderController;
 use App\Http\Controllers\Api\Restaurant\TableBookingController;
 use App\Http\Controllers\Api\Restaurant\TableController;
 use App\Http\Controllers\Api\Restaurant\HelperController as RestaurantHelperController;
+use App\Http\Controllers\Gym\GymUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/hotel-login', [RegistrationController::class, 'login']);
@@ -153,6 +156,12 @@ Route::group(
         Route::apiResource('hall-categories', HallCategoryController::class);
         Route::apiResource('halls', HallController::class);
         Route::apiResource('rents', HallRentController::class);
+        /** Hall Management End Here */
+
+        /** Hall Management Start Here */
+        Route::apiResource('gyms', GymController::class);
+        Route::apiResource('gym-charges', GymChargeController::class);
+        Route::apiResource('gym-users', GymUserController::class);
         /** Hall Management End Here */
     }
 );
