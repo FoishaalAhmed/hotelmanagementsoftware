@@ -722,9 +722,9 @@
             @endif
             @if (auth()->user()->can('All') ||
     auth()->user()->can('Gym'))
-                <li class="treeview @if (Request::path() === 'gym/gyms' || request()->is('gym/gyms/*') || Request::path() === 'gym/charges' || request()->is('gym/charges/*')) {{ 'active' }} @endif">
+                <li class="treeview @if (Request::path() === 'gym/gyms' || request()->is('gym/gyms/*') || Request::path() === 'gym/charges' || request()->is('gym/charges/*') || Request::path() === 'gym/users' || request()->is('gym/users/*')) {{ 'active' }} @endif">
                     <a href="#">
-                        <i class="fa fa-university"></i> <span>Hall Management</span>
+                        <i class="fa fa-university"></i> <span>Gym Management</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -764,6 +764,24 @@
                                 <li class="@if (Request::path() === 'gym/charges') {{ 'active' }} @endif"><a
                                         href="{{ route('gym.charges.index') }}"><i class="fa fa-list"></i>
                                         View Gym Charge</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview @if (Request::path() === 'gym/users' || request()->is('gym/users/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-user-circle"></i> <span>Gym User</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'gym/users/create') {{ 'active' }} @endif"><a href="{{ route('gym.users.create') }}"><i
+                                            class="fa fa-plus"></i>
+                                        New Gym User</a>
+                                </li>
+                                <li class="@if (Request::path() === 'gym/users') {{ 'active' }} @endif"><a href="{{ route('gym.users.index') }}"><i
+                                            class="fa fa-list"></i>
+                                        View Gym User</a>
                                 </li>
                             </ul>
                         </li>

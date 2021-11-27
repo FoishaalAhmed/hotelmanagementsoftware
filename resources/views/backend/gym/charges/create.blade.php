@@ -35,7 +35,7 @@
                                                 <select name="gym_id" class="form-control select2" id="type"
                                                     required="" style="width: 100%">
                                                     @foreach ($gyms as $item)
-                                                        <option value="{{ $item->id }}" @if (old('gym_id') == $item->name) {{ 'selected' }} @endif>
+                                                        <option value="{{ $item->id }}" @if (old('gym_id') == $item->id) {{ 'selected' }} @endif>
                                                             {{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
