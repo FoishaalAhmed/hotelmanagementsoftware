@@ -30,7 +30,7 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset('public/backend/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
 <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="{{asset('public/backend//plugins/timepicker/bootstrap-timepicker.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/backend/plugins/timepicker/bootstrap-timepicker.min.css')}}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('public/backend/bower_components/select2/dist/css/select2.min.css')}}">
 <!-- bootstrap wysihtml5 - text editor -->

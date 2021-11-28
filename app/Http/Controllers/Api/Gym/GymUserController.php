@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\GymUser;
 use Illuminate\Http\Request;
 
-class GymUserChargeController extends Controller
+class GymUserController extends Controller
 {
     protected $gymUserObject;
 

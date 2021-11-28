@@ -139,6 +139,7 @@ class Order extends Model
                 $booking_payment->invoice    = $invoice;
                 $booking_payment->paid       = $request->paid;
                 $booking_payment->save();
+                
             } elseif ($request->payment_method == 'Bank' && $request->paid != null) {
 
                 $bank = new BankPayment();

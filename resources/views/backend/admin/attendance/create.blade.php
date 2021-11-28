@@ -133,7 +133,7 @@
 </div>
 @endsection
 
-@section('footerSection')
+@section('footer')
     <script>
         $(function () {
             $('#date').datepicker({

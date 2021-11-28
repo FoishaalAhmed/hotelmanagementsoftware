@@ -661,7 +661,7 @@
             @endif
             @if (auth()->user()->can('All') ||
     auth()->user()->can('Hall'))
-                <li class="treeview @if (request()->is('hall/costs') || request()->is('hall/costs/*') || request()->is('hall/categories') || Request::path() === 'hall/halls' || request()->is('hall/halls/*') || Request::path() === 'hall/rents' || request()->is('hall/rents/*')) {{ 'active' }} @endif">
+                <li class="treeview @if (request()->is('hall/costs') || request()->is('hall/costs/*') || request()->is('hall/categories') || Request::path() === 'hall/halls' || request()->is('hall/halls/*') || Request::path() === 'hall/rents' || request()->is('hall/rents/*') || Request::path() === 'hall/bookings' || request()->is('hall/bookings/*')) {{ 'active' }} @endif">
                     <a href="#">
                         <i class="fa fa-university"></i> <span>Hall Management</span>
                         <span class="pull-right-container">
@@ -669,6 +669,26 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
+
+                        <li class="treeview @if (Request::path() === 'hall/bookings' || request()->is('hall/bookings/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-university"></i> <span>Hall Booking</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'hall/bookings/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('hall.bookings.create') }}"><i class="fa fa-plus"></i>
+                                        New Hall Booking</a>
+                                </li>
+                                <li class="@if (Request::path() === 'hall/bookings') {{ 'active' }} @endif"><a
+                                        href="{{ route('hall.bookings.index') }}"><i class="fa fa-list"></i>
+                                        View Hall Booking</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="@if (request()->is('hall/categories')) {{ 'active' }} @endif">
                             <a href="{{ route('hall.categories.index') }}">
                                 <i class="fa fa-list"></i> <span>{{ __('Hall Categories') }}</span>
@@ -706,8 +726,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="@if (Request::path() === 'hall/rents/create') {{ 'active' }} @endif"><a href="{{ route('hall.rents.create') }}"><i
-                                            class="fa fa-plus"></i>
+                                <li class="@if (Request::path() === 'hall/rents/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('hall.rents.create') }}"><i class="fa fa-plus"></i>
                                         New Hall Rent</a>
                                 </li>
                                 <li class="@if (Request::path() === 'hall/rents') {{ 'active' }} @endif"><a href="{{ route('hall.rents.index') }}"><i
