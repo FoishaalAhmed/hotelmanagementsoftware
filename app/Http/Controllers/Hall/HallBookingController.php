@@ -43,20 +43,6 @@ class HallBookingController extends Controller
         return back();
     }
 
-    public function edit(HallBooking $booking)
-    {
-        $bookedRoom = BookingDetail::where('hotel_id', auth()->user()->hotel_id)->where('status', 1)->pluck('room_id');
-        $rooms = Room::where('hotel_id', auth()->user()->hotel_id)->whereIn('id', $bookedRoom)->select('id', 'number')->orderBy('number', 'asc')->get();
-        $halls = Hall::where('hotel_id', auth()->user()->hotel_id)->orderBy('name', 'asc')->select('id', 'name')->get();
-        return view('backend.hall.bookings.edit', compact('rooms', 'halls', 'booking'));
-    }
-
-    public function update(Request $request, HallBooking $booking)
-    {
-        $this->hallBookingObject->updateHallBooking($request, $booking);
-        return redirect()->route('hall.bookings.index');
-    }
-
     public function destroy(HallBooking $booking)
     {
         $this->hallBookingObject->destroyHallBooking($booking);

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Employee\EmployeeController;
 use App\Http\Controllers\Api\Gym\GymChargeController;
 use App\Http\Controllers\Api\Gym\GymController;
 use App\Http\Controllers\Api\Gym\GymUserController;
+use App\Http\Controllers\Api\Hall\HallBookingController;
 use App\Http\Controllers\Api\Hall\HallCategoryController;
 use App\Http\Controllers\Api\Hall\HallController;
 use App\Http\Controllers\Api\Hall\HallRentController;
@@ -153,9 +154,11 @@ Route::group(
         /** Employee Api End Here **/
 
         /** Hall Management Start Here */
+        Route::post('get-rent', [ApiHelperController::class, 'rent'])->name('get.rent');
         Route::apiResource('hall-categories', HallCategoryController::class);
         Route::apiResource('halls', HallController::class);
         Route::apiResource('rents', HallRentController::class);
+        Route::apiResource('hall-bookings', HallBookingController::class)->except(['show', 'update']);
         /** Hall Management End Here */
 
         /** Gym Management Start Here */

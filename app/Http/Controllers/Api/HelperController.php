@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Charge;
 use App\Models\Bank;
 use App\Models\BookingDetail;
+use App\Models\HallRent;
 use App\Models\MobileBank;
 use App\Models\Room;
 use App\Models\VehicleCategory;
@@ -34,5 +35,12 @@ class HelperController extends Controller
             'mobileBanks' => $mobileBanks,
         ];
         return response()->json($response, 200);
+    }
+
+    public function rent(Request $request)
+    {
+        $rent = HallRent::where('hotel_id', auth()->user()->hotel_id)->where('type', $request->type)->where('hall_id', $request->hall_id)->select('rent')->first();
+
+        echo json_encode($rent);
     }
 }
