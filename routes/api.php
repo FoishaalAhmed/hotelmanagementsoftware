@@ -159,6 +159,7 @@ Route::group(
         Route::apiResource('halls', HallController::class);
         Route::apiResource('rents', HallRentController::class);
         Route::apiResource('hall-bookings', HallBookingController::class)->except(['show', 'update']);
+        Route::get('booked-room', [ApiHelperController::class, 'booked_room']);
         /** Hall Management End Here */
 
         /** Gym Management Start Here */

@@ -43,4 +43,12 @@ class HelperController extends Controller
 
         echo json_encode($rent);
     }
+
+    public function booked_room()
+    {
+        $bookedRoom = BookingDetail::where('hotel_id', auth()->user()->hotel_id)->where('status', 1)->pluck('room_id');
+        $rooms = Room::where('hotel_id', auth()->user()->hotel_id)->whereIn('id', $bookedRoom)->select('id', 'number')->orderBy('number', 'asc')->get();
+
+        return response($rooms, 200);
+    }
 }
