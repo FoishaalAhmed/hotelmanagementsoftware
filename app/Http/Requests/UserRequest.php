@@ -14,7 +14,6 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        //exit($this->user);
         return true;
     }
 

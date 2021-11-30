@@ -358,8 +358,7 @@
                         var timeStart = new Date("01/01/2007 " + time1).getHours();
                         var timeEnd = new Date("01/01/2007 " + time2).getHours();
 
-                        var hourDiff = timeEnd - timeStart;
-                        alert(hourDiff);   
+                        var hourDiff = timeEnd - timeStart;   
                         var rent = hourDiff * data.rent;
 
                     } else {
