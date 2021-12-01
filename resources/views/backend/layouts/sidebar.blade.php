@@ -809,6 +809,80 @@
                     </ul>
                 </li>
             @endif
+            @if (auth()->user()->can('All') ||
+    auth()->user()->can('Tour'))
+                <li class="treeview @if (Request::path() === 'tour/tours' || request()->is('tour/tours/*') || Request::path() === 'tour/charges' || request()->is('tour/charges/*') || Request::path() === 'tour/guides' || request()->is('tour/guides/*') || request()->is('tour/packages')) {{ 'active' }} @endif">
+                    <a href="#">
+                        <i class="fa fa-university"></i> <span>Tour Management</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li class="treeview @if (Request::path() === 'tour/tours' || request()->is('tour/tours/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-university"></i> <span>Tour</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'tour/tours/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('tour.tours.create') }}"><i class="fa fa-plus"></i>
+                                        New Tour</a>
+                                </li>
+                                <li class="@if (Request::path() === 'tour/tours') {{ 'active' }} @endif"><a href="{{ route('tour.tours.index') }}"><i
+                                            class="fa fa-list"></i>
+                                        View Tour</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="@if (request()->is('tour/packages')) {{ 'active' }} @endif">
+                            <a href="{{ route('tour.packages.index') }}">
+                                <i class="fa fa-money"></i> <span>{{ __('Tour Package') }}</span>
+                            </a>
+                        </li>
+                        <li class="treeview @if (Request::path() === 'tour/charges' || request()->is('tour/charges/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-money"></i> <span>Tour Guide Charge</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'tour/charges/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('tour.charges.create') }}"><i class="fa fa-plus"></i>
+                                        New Tour Guide Charge</a>
+                                </li>
+                                <li class="@if (Request::path() === 'tour/charges') {{ 'active' }} @endif"><a
+                                        href="{{ route('tour.charges.index') }}"><i class="fa fa-list"></i>
+                                        View Tour Guide Charge</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview @if (Request::path() === 'tour/guides' || request()->is('tour/guides/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-user-circle"></i> <span>Tour Guide</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'tour/guides/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('tour.guides.create') }}"><i class="fa fa-plus"></i>
+                                        New Tour Guide</a>
+                                </li>
+                                <li class="@if (Request::path() === 'tour/guides') {{ 'active' }} @endif"><a
+                                        href="{{ route('tour.guides.index') }}"><i class="fa fa-list"></i>
+                                        View Tour Guide</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
         </ul>
     </section>
     <!-- /.sidebar -->
