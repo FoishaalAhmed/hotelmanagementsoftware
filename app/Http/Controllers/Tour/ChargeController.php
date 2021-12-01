@@ -41,7 +41,7 @@ class ChargeController extends Controller
     {
         $guides = Guide::where('hotel_id', auth()->user()->hotel_id)->orderBy('name', 'asc')->select('id', 'name')->get();
         $packages = TourPackage::where('hotel_id', auth()->user()->hotel_id)->orderBy('name', 'asc')->select('id', 'name')->get();
-        return view('backend.tour.charges.create', compact('guides', 'packages', 'charge'));
+        return view('backend.tour.charges.edit', compact('guides', 'packages', 'charge'));
     }
 
     public function update(Request $request, GuideCharge $charge)

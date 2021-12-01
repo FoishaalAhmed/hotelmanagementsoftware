@@ -18,7 +18,7 @@ class CreateGuideChargesTable extends Migration
             $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
             $table->foreignId('guide_id')->constrained()->onDelete('cascade');
             $table->string('type');
-            $table->foreignId('package_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('tour_package_id')->nullable()->constrained()->onDelete('cascade');
             $table->integer('charge');
             $table->timestamps();
         });
