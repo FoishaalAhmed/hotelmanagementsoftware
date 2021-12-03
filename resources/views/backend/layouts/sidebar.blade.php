@@ -809,11 +809,10 @@
                     </ul>
                 </li>
             @endif
-            @if (auth()->user()->can('All') ||
-    auth()->user()->can('Tour'))
+            @if (auth()->user()->can('All') || auth()->user()->can('Tour'))
                 <li class="treeview @if (Request::path() === 'tour/tours' || request()->is('tour/tours/*') || Request::path() === 'tour/charges' || request()->is('tour/charges/*') || Request::path() === 'tour/guides' || request()->is('tour/guides/*') || request()->is('tour/packages')) {{ 'active' }} @endif">
                     <a href="#">
-                        <i class="fa fa-university"></i> <span>Tour Management</span>
+                        <i class="fa fa-globe"></i> <span>Tour Management</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -822,7 +821,7 @@
 
                         <li class="treeview @if (Request::path() === 'tour/tours' || request()->is('tour/tours/*')) {{ 'active' }} @endif">
                             <a href="#">
-                                <i class="fa fa-university"></i> <span>Tour</span>
+                                <i class="fa fa-globe"></i> <span>Tour</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>

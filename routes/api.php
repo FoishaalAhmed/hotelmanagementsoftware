@@ -48,6 +48,11 @@ use App\Http\Controllers\Api\Restaurant\OrderController;
 use App\Http\Controllers\Api\Restaurant\TableBookingController;
 use App\Http\Controllers\Api\Restaurant\TableController;
 use App\Http\Controllers\Api\Restaurant\HelperController as RestaurantHelperController;
+use App\Http\Controllers\Api\Tour\ChargeController as TourChargeController;
+use App\Http\Controllers\Api\Tour\GuideController;
+use App\Http\Controllers\Api\Tour\HelperController as TourHelperController;
+use App\Http\Controllers\Api\Tour\PackageController;
+use App\Http\Controllers\Api\Tour\TourController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/hotel-login', [RegistrationController::class, 'login']);
@@ -167,5 +172,15 @@ Route::group(
         Route::apiResource('gym-charges', GymChargeController::class);
         Route::apiResource('gym-users', GymUserController::class);
         /** Gym Management End Here */
+
+        /** Tour Management Start Here */
+        Route::apiResource('tours', TourController::class)->except(['update']);
+        Route::apiResource('tour-charges', TourChargeController::class);
+        Route::apiResource('packages', PackageController::class);
+        Route::apiResource('guides', GuideController::class);
+        Route::get('tour-helper-info', [TourHelperController::class, 'GuidePackageAndBookedRoomInfo']);
+        Route::post('get-charge-by-type', [TourHelperController::class, 'get_charge_by_type']);
+        Route::post('get-charge-by-package', [TourHelperController::class, 'get_charge_by_package']);
+        /** Tour Management End Here */
     }
 );
