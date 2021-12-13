@@ -809,7 +809,8 @@
                     </ul>
                 </li>
             @endif
-            @if (auth()->user()->can('All') || auth()->user()->can('Tour'))
+            @if (auth()->user()->can('All') ||
+    auth()->user()->can('Tour'))
                 <li class="treeview @if (Request::path() === 'tour/tours' || request()->is('tour/tours/*') || Request::path() === 'tour/charges' || request()->is('tour/charges/*') || Request::path() === 'tour/guides' || request()->is('tour/guides/*') || request()->is('tour/packages')) {{ 'active' }} @endif">
                     <a href="#">
                         <i class="fa fa-globe"></i> <span>Tour Management</span>
@@ -875,6 +876,69 @@
                                 <li class="@if (Request::path() === 'tour/guides') {{ 'active' }} @endif"><a
                                         href="{{ route('tour.guides.index') }}"><i class="fa fa-list"></i>
                                         View Tour Guide</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+            @if (auth()->user()->can('All') || auth()->user()->can('Laundry'))
+                <li class="treeview @if (request()->is('laundry/costs') || request()->is('laundry/costs/*') || request()->is('laundry/products') || Request::path() === 'laundry/charges' || request()->is('laundry/charges/*') || Request::path() === 'laundry/services' || request()->is('laundry/services/*')) {{ 'active' }} @endif">
+                    <a href="#">
+                        <i class="fa fa-shirtsinbulk"></i> <span>Laundry Management</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li class="@if (request()->is('laundry/costs') || request()->is('laundry/costs/*')) {{ 'active' }} @endif">
+                            <a href="{{ route('laundry.costs.index') }}">
+                                <i class="fa fa-money"></i> <span>{{ __('Daily Costs') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="@if (request()->is('laundry/products')) {{ 'active' }} @endif">
+                            <a href="{{ route('laundry.products.index') }}">
+                                <i class="fa fa-product-hunt"></i> <span>{{ __('Product') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview @if (Request::path() === 'laundry/charges' || request()->is('laundry/charges/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-money"></i> <span>Laundry Charge</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'laundry/charges/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('laundry.charges.create') }}"><i class="fa fa-plus"></i>
+                                        New Laundry Charge</a>
+                                </li>
+                                <li class="@if (Request::path() === 'laundry/charges') {{ 'active' }} @endif"><a
+                                        href="{{ route('laundry.charges.index') }}"><i class="fa fa-list"></i>
+                                        View Laundry Charge</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview @if (Request::path() === 'laundry/services' || request()->is('laundry/services/*')) {{ 'active' }} @endif">
+                            <a href="#">
+                                <i class="fa fa-shirtsinbulk"></i> <span>Laundry Service</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="@if (Request::path() === 'laundry/services/create') {{ 'active' }} @endif"><a
+                                        href="{{ route('laundry.services.create') }}"><i
+                                            class="fa fa-plus"></i>
+                                        New Laundry service</a>
+                                </li>
+                                <li class="@if (Request::path() === 'laundry/services') {{ 'active' }} @endif"><a
+                                        href="{{ route('laundry.services.index') }}"><i class="fa fa-list"></i>
+                                        View Laundry service</a>
                                 </li>
                             </ul>
                         </li>

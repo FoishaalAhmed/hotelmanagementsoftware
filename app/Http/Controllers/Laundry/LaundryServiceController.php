@@ -48,7 +48,8 @@ class LaundryServiceController extends Controller
     {
         $laundryServiceDetailObject = new LaundryServiceDetail();
         $details = $laundryServiceDetailObject->getLaundryServiceDetail($service->id);
-        return view('backend.laundry.services.show', compact('service', 'details'));
+        $room = Room::where('id', $service->room_id)->firstOrFail();
+        return view('backend.laundry.services.show', compact('service', 'details', 'room'));
     }
 
     public function destroy(LaundryService $service)

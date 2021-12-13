@@ -15,7 +15,7 @@ class LaundryServiceDetail extends Model
 
     public function getLaundryServiceDetail(Int $laundry_service_id)
     {
-        $details = $this::join('laundry_products', 'laundry_service_details.laundry_product_id', '=', 'laundry_products')
+        $details = $this::join('laundry_products', 'laundry_service_details.laundry_product_id', '=', 'laundry_products.id')
                          ->where('laundry_service_details.laundry_service_id', $laundry_service_id)
                          ->where('laundry_service_details.hotel_id', auth()->user()->hotel_id)
                          ->select('laundry_service_details.*', 'laundry_products.name')

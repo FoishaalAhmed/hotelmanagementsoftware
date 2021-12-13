@@ -36,6 +36,10 @@ use App\Http\Controllers\Api\Hotel\RoomReviewCategoryController;
 use App\Http\Controllers\Api\Hotel\RoomReviewController;
 use App\Http\Controllers\Api\Hotel\RoomTypeController;
 use App\Http\Controllers\Api\Hotel\UserController;
+use App\Http\Controllers\Api\Laundry\HelperController as LaundryHelperController;
+use App\Http\Controllers\Api\Laundry\LaundryChargeController;
+use App\Http\Controllers\Api\Laundry\LaundryServiceController;
+use App\Http\Controllers\Api\Laundry\ProductController;
 use App\Http\Controllers\Api\Parking\ChargeController;
 use App\Http\Controllers\Api\Parking\ParkingController;
 use App\Http\Controllers\Api\Parking\VehicleCategoryController;
@@ -182,5 +186,12 @@ Route::group(
         Route::post('get-charge-by-type', [TourHelperController::class, 'get_charge_by_type']);
         Route::post('get-charge-by-package', [TourHelperController::class, 'get_charge_by_package']);
         /** Tour Management End Here */
+
+        /** Laundry Management Start Here */
+        Route::post('get-charge-by-type', [LaundryHelperController::class, 'charge'])->name('get.charge.by.type');
+        Route::apiResource('products', ProductController::class);
+        Route::apiResource('laundry-charges', LaundryChargeController::class);
+        Route::apiResource('laundry-services', LaundryServiceController::class);
+        /** Laundry Management End Here */
     }
 );
