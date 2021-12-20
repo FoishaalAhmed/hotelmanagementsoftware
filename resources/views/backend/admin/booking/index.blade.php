@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="">
                                     <form action=" {{ route('admin.booking.store') }}" class=" form-alignment"
-                                        method="POST">
+                                        method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="column-label input-date-width mr">
                                             <label for="country">Check In</label>
@@ -666,6 +666,7 @@
             $('#vat_amount').val(vatAmount);
             let subtotal = parseFloat(total) + parseFloat(vatAmount);
             $('#subtotal').val(subtotal);
+            $('#total').val(subtotal);
         }
 
         function getCoupon(code) {
