@@ -26,9 +26,11 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10%;">{{ __('Sl.') }}</th>
-                                        <th style="width: 20%;">{{ __('Table') }}</th>
-                                        <th style="width: 40%;">{{ __('User') }}</th>
-                                        <th style="width: 20%;">{{ __('Room') }}</th>
+                                        <th style="width: 25%;">{{ __('Table') }}</th>
+                                        <th style="width: 25%;">{{ __('Room') }}</th>
+                                        <th style="width: 10%;">{{ __('Date') }}</th>
+                                        <th style="width: 10%;">{{ __('Time') }}</th>
+                                        <th style="width: 10%;">{{ __('Duration') }}</th>
                                         <th style="width: 10%;">{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -38,8 +40,10 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->table }}</td>
-                                            <td>{{ $item->name }}</td>
                                             <td>{{ $item->number }}</td>
+                                            <td>{{ date('d M, Y', strtotime($item->date)) }}</td>
+                                            <td>{{ date('h:i A', strtotime($item->start_time)) }}</td>
+                                            <td>{{ $item->duration }}</td>
                                             <td>
                                                 <a class="btn btn-sm bg-blue"
                                                     href="{{ route('restaurant.bookings.edit', [$item->id]) }}"><span

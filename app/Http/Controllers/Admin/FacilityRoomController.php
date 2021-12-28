@@ -27,7 +27,7 @@ class FacilityRoomController extends Controller
     public function create()
     {
         $rooms = Room::where('hotel_id', auth()->user()->hotel_id)->select('id', 'number')->get();
-        $facility = Facility::select('id', 'name')->get();
+        $facility = Facility::select('id', 'name')->get(); 
         return view('backend.admin.roomFacilities.create', compact('facility', 'rooms'));
     }
 

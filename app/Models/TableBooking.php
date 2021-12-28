@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class TableBooking extends Model
 {
     protected $fillable = [
-        'hotel_id', 'table_id', 'user_id', 'status',
+        'hotel_id', 'table_id', 'user_id', 'date', 'start_time', 'duration', 'status',
     ];
 
     public static $validateRule = [
         'table_id' => ['required', 'numeric'],
         'room_id' => ['required', 'numeric'],
+        'date' => ['required', 'date'],
+        'start_time' => ['required'],
+        'duration' => ['required'],
     ];
 
     public function getBookingTable()
@@ -32,6 +35,9 @@ class TableBooking extends Model
         $number = Room::findOrFail($request->room_id)->number;
         $this->hotel_id = auth()->user()->hotel_id;
         $this->table_id = $request->table_id;
+        $this->date = date('Y-m-d', strtotime($request->date));
+        $this->start_time = date('H:i', strtotime($request->start_time));
+        $this->duration = $request->duration;
         $this->number   = $number;
         $this->user_id  = $user_id;
         $this->status   = 1;
@@ -48,6 +54,9 @@ class TableBooking extends Model
         $number = Room::findOrFail($request->room_id)->number;
         $booking->hotel_id = auth()->user()->hotel_id;
         $booking->table_id = $request->table_id;
+        $booking->date = date('Y-m-d', strtotime($request->date));
+        $booking->start_time = date('H:i', strtotime($request->start_time));
+        $booking->duration = $request->duration;
         $booking->number   = $number;
         $booking->user_id  = $user_id;
         $updateTableBooking = $booking->save();

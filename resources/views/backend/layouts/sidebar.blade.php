@@ -612,8 +612,7 @@
                     </ul>
                 </li>
             @endif
-            @if (auth()->user()->can('All') ||
-    auth()->user()->can('Parking'))
+            @if (auth()->user()->can('All') || auth()->user()->can('Parking'))
                 <li class="treeview @if (Request::path() === 'parking/parkings/create' || Request::path() === 'parking/parkings' || request()->is('parking/parkings/*') || Request::path() === 'parking/charges/*' || Request::path() === 'parking/charges' || request()->is('parking/costs') || request()->is('parking/costs/*') || request()->is('parking/categories')) {{ 'active' }} @endif">
                     <a href="#">
                         <i class="fa fa-car"></i> <span>Parking Management</span>

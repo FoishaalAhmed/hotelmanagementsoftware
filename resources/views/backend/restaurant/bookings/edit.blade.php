@@ -61,6 +61,35 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>{{ __('Date') }}</label>
+                                            <input type="text" class="form-control" id="date" placeholder="Check Out"
+                                                name="date" autocomplete="off" value="{{ $booking->date }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>{{ __('Time') }}</label>
+                                            <input type="text" class="form-control timepicker" id="start_time"
+                                                placeholder="Check Out" name="start_time" autocomplete="off"
+                                                value="{{ $booking->start_time }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>{{ __('duration') }}</label>
+                                            <input type="text" class="form-control" id="duration" placeholder="Check Out"
+                                                name="duration" autocomplete="off" value="{{ $booking->duration }}">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <center>
                                         <button type="reset" class="btn btn-sm bg-red">{{ __('Cancel') }}</button>
@@ -75,4 +104,22 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('footer')
+    <script>
+        $(function() {
+            $('#date').datepicker({
+                autoclose: true,
+                changeYear: true,
+                changeMonth: true,
+                dateFormat: "mm/dd/yy",
+                yearRange: "-0:+1"
+            });
+
+            $('.timepicker').timepicker({
+                showInputs: false
+            })
+        });
+    </script>
 @endsection
